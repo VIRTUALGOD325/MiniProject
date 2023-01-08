@@ -10,8 +10,27 @@
     type = "text/css"
     href = "./style/loginStyle.css" />
     <script>
-        function navigateUser(){
-            window.location.href="http://127.0.0.1:5501/login.html";
+        function verifyOTP(){
+            // Find the last digit
+            var digit = OTP % 10;
+                while (OTP != 0)
+                {
+                    // Find the current last digit
+                    var current_digit = OTP % 10;
+
+                    // Update the value of N
+                    OTP = parseInt(OTP / 10);
+
+                    // If there exists any distinct
+                    // digit, then return No
+                    if (current_digit != digit)
+                    {
+                        alert("RETRY WRONG OTP")
+                    }
+                }
+
+                // Otherwise, return Yes
+                navigateUser();
         }
         // Function to generate OTP
         function generateOTP() {
@@ -24,7 +43,11 @@
                     OTP += digits[Math.floor(Math.random() * 10)];
                 }
                 alert("OTP of 6 digits: " + OTP);
-            }
+        }
+
+        function navigateUser(){
+            window.location.replace("index.html");
+        }
     </script>
 </head>
 <body>
@@ -40,7 +63,7 @@
         <input type="text" placeholder="Enter Email" name="uname" required>
     
         <label for="psw"><b>OTP</b> <a style="padding: 10px;" onclick="generateOTP()">SHOW OTP</a></label>
-        <input type="password" placeholder="Enter OTP sent in Email" name="psw" required>
+        <input type="password" placeholder="Enter OTP" name="psw" required>
     
         <button type="submit" onclick="navigateUser()">SUBMIT</button>
         <label>
