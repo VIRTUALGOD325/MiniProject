@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>PASSWORD RESET</title>
+    <link rel = "stylesheet"
+    type = "text/css"
+    href = "./style/loginStyle.css" />
+    <script>
+        function navigateUser(){
+            window.location.href="http://127.0.0.1:5501/login.html";
+        }
+        // Function to generate OTP
+        function generateOTP() {
+                
+                // Declare a digits variable 
+                // which stores all digits
+                var digits = '0123456789';
+                let OTP = '';
+                for (let i = 0; i < 6; i++ ) {
+                    OTP += digits[Math.floor(Math.random() * 10)];
+                }
+                alert("OTP of 6 digits: " + OTP);
+            }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-info">
+        <a class="navbar-brand" href="">
+            <img src="./assets/logo.png" width="70" height="70" class="d-inline-block align-top" alt="logo">
+            <h1 class="d-inline-block align-top" style="padding: 10px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-style: italic; font-weight: bold;">GTA MotorSports</h1>
+        </a>
+    </nav>
+    <form method="post">
+    <div class="container">
+        <label for="uname"><b>EMAIL</b></label>
+        <input type="text" placeholder="Enter Email" name="uname" required>
+    
+        <label for="psw"><b>OTP</b> <a style="padding: 10px;" onclick="generateOTP()">SHOW OTP</a></label>
+        <input type="password" placeholder="Enter OTP sent in Email" name="psw" required>
+    
+        <button type="submit" onclick="navigateUser()">SUBMIT</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+
+        <span class="psw"><a onclick="generateOTP()">Resend OTP</a></span>
+    </div>
+    </form>
+</body>
+</html>
